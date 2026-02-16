@@ -8,7 +8,7 @@ public class TimerLogic
     public void SetBreakTime(int time)
     {
         if (time == 5) {
-            _intMin = 5;
+            _intMin = 3;
         }
         else if (time == 10) {
             _intMin = 10;

@@ -144,6 +144,8 @@ public partial class MainPage : ContentPage
         btnTake15.IsEnabled = true;
         btnStop.IsEnabled = false;
         isRunning = false;
+        ftmMain.Background = Colors.White;
         isWhite = true;
+        
     }
 }
