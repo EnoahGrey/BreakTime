@@ -67,18 +67,36 @@ public partial class MainPage : ContentPage
         btnTake10.IsEnabled = false;
         btnTake15.IsEnabled = false;
         btnStop.IsEnabled = true;
-            isRunning = true;
+        
+        oTimer.SetBreakTime(10);
+        isRunning = true;
 
-            Application.Current.Dispatcher.StartTimer(TimeSpan.FromSeconds(1), () =>
+        Application.Current.Dispatcher.StartTimer(TimeSpan.FromSeconds(1), () =>
+        {
+            if (isRunning)
             {
-                if (isRunning)
+                if (oTimer._intMin > 0)
                 {
-                    oTimer.SetBreakTime(10);
-                    oTimer.SetTickCount();
+                    oTimer.SetTickCount(); 
                     lblDisplay.Text = oTimer.MinLeftMessage();
                 }
-                return isRunning;
-            });
+                else
+                {
+                    lblDisplay.Text = "Time is Up!";
+                    if (isWhite)
+                    {
+                        ftmMain.Background = Colors.Red;
+                        isWhite = false;
+                    }
+                    else
+                    {
+                        ftmMain.Background = Colors.White;
+                        isWhite = true;
+                    }
+                }
+            }
+            return isRunning;
+        });
     }
 
     private void BtnTake15_OnClicked(object sender, EventArgs e)
@@ -87,18 +105,36 @@ public partial class MainPage : ContentPage
         btnTake10.IsEnabled = false;
         btnTake15.IsEnabled = false;
         btnStop.IsEnabled = true;
-            isRunning = true;
+        
+        oTimer.SetBreakTime(15);
+        isRunning = true;
 
-            Application.Current.Dispatcher.StartTimer(TimeSpan.FromSeconds(1), () =>
+        Application.Current.Dispatcher.StartTimer(TimeSpan.FromSeconds(1), () =>
+        {
+            if (isRunning)
             {
-                if (isRunning)
+                if (oTimer._intMin > 0)
                 {
-                    oTimer.SetBreakTime(15);
-                    oTimer.SetTickCount();
+                    oTimer.SetTickCount(); 
                     lblDisplay.Text = oTimer.MinLeftMessage();
                 }
-                return isRunning;
-            });
+                else
+                {
+                    lblDisplay.Text = "Time is Up!";
+                    if (isWhite)
+                    {
+                        ftmMain.Background = Colors.Red;
+                        isWhite = false;
+                    }
+                    else
+                    {
+                        ftmMain.Background = Colors.White;
+                        isWhite = true;
+                    }
+                }
+            }
+            return isRunning;
+        });
     }
 
     private void BtnStop_OnClicked(object sender, EventArgs e)
